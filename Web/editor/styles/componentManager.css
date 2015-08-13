@@ -1,0 +1,37 @@
+.drag-component-row{
+  padding: 20px 20px 0 20px;
+  margin-bottom: 20px;
+}
+
+.drag-component{
+  width: 80px;
+  border: 1px solid #eee;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.drag-component:hover{
+  border: 1px solid #ddd;
+}
+
+.drag-component:active{
+  border: 1px solid #ccc;
+}
+
+.drag-component-icon{
+  height: 80px;
+}
+
+.drag-component-icon img{
+  width: 40px;
+  height: 40px;
+  margin: 20px;
+}
+
+.drag-component-title{
+  border-top: 1px solid #eee;
+  line-height: 20px;
+  font-size: 12px;
+  text-align: center;
+  background: #fff;
+}

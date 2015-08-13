@@ -1,0 +1,16 @@
+.real-device{width:360px; height: 740px; margin: 0 auto; background:url(../assets/iphone6.png) no-repeat; background-size: 360px auto; padding-top:90px;}
+.real-device-content{width:320px; height:554px; margin: 0 auto; background: #fff; position: relative;}
+
+.ios-status{height: 20px; background: #333; color: #eee; line-height: 20px; font-size: 10px; }
+.ios-status-telecom{float: left; margin-left: 10px;}
+.ios-status-capacity{float: right; margin-right: 10px;}
+
+
+.ios-navbar{line-height: 44px; text-align: center; background: #ccc;}
+.ios-navbar-title{font-size: 18px;}
+
+
+.ios-tabbar{height: 50px; border-top: 1px solid #ccc; position: absolute; bottom: 0; width: 100%; display: -webkit-flex;}
+.ios-tabbar-item{-webkit-flex: 1; text-align: center;}
+.ios-tabbar-item-img{width:20px; height:20px; background: #cdcdcd; margin-top: 10px;}
+.ios-tabbar-item-title{display: block; line-height: 20px; font-size: 10px;}

@@ -1,0 +1,21 @@
+.inspector-title{
+  line-height: 40px;
+  font-size: 20px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.inspector-items{
+  padding: 10px;
+}
+
+.inspector-item{
+  margin-bottom: 15px;
+  display: -webkit-box;
+  line-height: 30px;
+}
+
+.inspector-label{
+  width: 60px;
+  font-size: 12px;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Real Prototyping</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="styles/app.css" type="text/css">
+  <link rel="stylesheet" href="styles/inspector.css" type="text/css">
+  <link rel="stylesheet" href="styles/viewComponent.css" type="text/css">
+  <link rel="stylesheet" href="styles/componentManager.css" type="text/css">
+</head>
+<body>
+  
+  <div class="editor">
+    <div class="component-manager" id="componentManager">
+
+      <div class="drag-component-row">
+        <div class="drag-component" draggable="true">
+          <div class="drag-component-icon">
+            <img src="images/component_icon_view.png" alt="">
+          </div>
+          <div class="drag-component-title">
+            View
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="workspace">
+      <div class="simulator" id="simulator"></div>
+    </div>
+    <div class="inspector" id="inspector"></div>
+  </div>
+
+  <script src="scripts/mithril.min.js"></script>
+  
+  <script src="scripts/util.js"></script>
+
+  <script src="scripts/inspector.js"></script>
+  <script src="scripts/viewComponent.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>
