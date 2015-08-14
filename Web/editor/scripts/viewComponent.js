@@ -1,15 +1,26 @@
 var ViewComponent = {
   defaultAttributes: {
     height: 100,
-    width: 100
+    width: 100,
+    isSelectable: true,
+    isSelected: true
   },
 
   controller: function(attributes) {
     attributes = attributes || {};
+    if (attributes.isSelectable === undefined) {
+      attributes.isSelectable = false;
+    }
+    if (attributes.isSelected === undefined) {
+      attributes.isSelected = false;
+    }
     return {
       title: 'View',
 
-      isSelected: m.prop(true),
+      isSelected: m.prop(attributes.isSelected),
+      isSelectable: m.prop(attributes.isSelectable),
+      isDragOver: m.prop(false),
+
       subComponents: m.prop([]),
       
       inspectAttributes: [
@@ -87,12 +98,22 @@ var ViewComponent = {
 
       onDragOver: function(e) {
         e.preventDefault();
+        e.stopPropagation();
+
+        this.isDragOver(true);
+      },
+      onDragLeave: function(e) {
+        e.stopPropagation();
+
+        this.isDragOver(false);
       },
       onDragDrop: function(e) {
         e.stopPropagation();
         if (currentSelectedComponent) {
           currentSelectedComponent.isSelected(false);
         }
+
+        this.isDragOver(false);
 
         var ComponentOnDrop = window[componentManager.currentDrag()];
 
@@ -110,6 +131,10 @@ var ViewComponent = {
       onClicked: function(e) {
         e.stopPropagation();
 
+        if (!this.isSelectable()) {
+          return;
+        }
+
         if (currentSelectedComponent) {
           currentSelectedComponent.isSelected(false);
         }
@@ -125,8 +150,9 @@ var ViewComponent = {
 
   view: function(ctrl) {
     return m('.component-view', {
-      className: ctrl.isSelected() ? 'selected' : '',
+      className: ctrl.isDragOver() ? 'dragover' : (ctrl.isSelected() ? 'selected' : ''),
       ondragover: ctrl.onDragOver.bind(ctrl),
+      ondragleave: ctrl.onDragLeave.bind(ctrl),
       ondrop: ctrl.onDragDrop.bind(ctrl),
       onclick: ctrl.onClicked.bind(ctrl),
       style: util.generateCSS(ctrl.inspectAttributes)
