@@ -1,4 +1,4 @@
-var ViewComponent = {
+var ImageComponent = {
   defaultAttributes: {
     height: 100,
     width: 100
@@ -7,10 +7,9 @@ var ViewComponent = {
   controller: function(attributes) {
     attributes = attributes || {};
     return {
-      title: 'View',
+      title: 'Image',
 
       isSelected: m.prop(true),
-      subComponents: m.prop([]),
       
       inspectAttributes: [
         {
@@ -30,27 +29,11 @@ var ViewComponent = {
         },
 
         {
-          key: 'margin',
-          name: '外边距',
-          type: 'four-number',
-          unit: 'px',
-          defaultValue: m.prop([0, 0, 0, 0]),
-        },
-
-        {
-          key: 'padding',
-          name: '内边距',
-          type: 'four-number',
-          unit: 'px',
-          defaultValue: m.prop([0, 0, 0, 0]),
-        },
-
-        {
           key: 'background-color',
           name: '背景色',
           type: 'color',
           unit: '',
-          defaultValue: m.prop('#ffffff')
+          defaultValue: m.prop('#cdcdcd')
         },
 
         {
@@ -70,12 +53,20 @@ var ViewComponent = {
         },
 
         {
-          key: '-webkit-box-orient',
-          name: '排列方式',
+          key: 'background-image',
+          name: '图片',
+          type: 'url',
+          unit: '',
+          defaultValue: m.prop('')
+        },
+
+        {
+          key: 'background-image-type',
+          name: '伸展方式',
           type: 'single-select',
           unit: '',
-          defaultValue: m.prop('vertical'),
-          values: ['vertical', 'horizontal']
+          defaultValue: m.prop('normal'),
+          values: ['normal', 'stretch']
         }
       ],
 
@@ -90,22 +81,6 @@ var ViewComponent = {
       },
       onDragDrop: function(e) {
         e.stopPropagation();
-        if (currentSelectedComponent) {
-          currentSelectedComponent.isSelected(false);
-        }
-
-        var ComponentOnDrop = window[componentManager.currentDrag()];
-
-        var newComponent = m.component(ComponentOnDrop, ComponentOnDrop.defaultAttributes);
-        var newComponentCtrl = new newComponent.controller();
-
-        this.subComponents().push({
-          controller: newComponentCtrl,
-          view: newComponent.view
-        });
-        inspector.inspect(newComponentCtrl);
-
-        currentSelectedComponent = newComponentCtrl;
       },
       onClicked: function(e) {
         e.stopPropagation();
@@ -124,20 +99,13 @@ var ViewComponent = {
   },
 
   view: function(ctrl) {
-    return m('.component-view', {
+    return m('.component-image', {
       className: ctrl.isSelected() ? 'selected' : '',
       ondragover: ctrl.onDragOver.bind(ctrl),
       ondrop: ctrl.onDragDrop.bind(ctrl),
       onclick: ctrl.onClicked.bind(ctrl),
       style: util.generateCSS(ctrl.inspectAttributes)
-
-    }, [
-
-      ctrl.subComponents().map(function(component) {
-        return component.view(component.controller);
-      })
-
-    ]);
+    });
   }
 };
 

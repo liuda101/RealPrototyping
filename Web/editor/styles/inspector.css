@@ -19,3 +19,50 @@
   width: 60px;
   font-size: 12px;
 }
+
+.inspector-four-input{
+  position: relative;
+  width: 200px;
+  height: 130px;
+}
+
+.inspector-four-input.margin{
+  background: url(../images/inspector_icon_margin.png) no-repeat center;
+  background-size: 80px;
+}
+.inspector-four-input.padding{
+  background: url(../images/inspector_icon_padding.png) no-repeat center;
+  background-size: 80px;
+}
+
+.inspector-four-input input{
+  position: absolute;
+  width: 50px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.inspector-four-input input:first-child{
+  top: 0;
+  left: 50%;
+  margin-left: -25px;
+}
+
+.inspector-four-input input:nth-child(2){
+  right: 0;
+  top: 50%;
+  margin-top: -10px;
+}
+
+.inspector-four-input input:nth-child(3){
+  bottom: 0;
+  left: 50%;
+  margin-left: -25px;
+}
+
+.inspector-four-input input:nth-child(4){
+  left: 0;
+  top: 50%;
+  margin-top: -10px;
+}
+

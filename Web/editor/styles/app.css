@@ -7,19 +7,24 @@ html, body, ul, li, div, h1, h2, h3, h4, h5, h6{padding:0; margin:0; -webkit-use
 }
 
 .component-manager{
-  width: 300px; border-right: 2px solid #ECE9E9;
+  width: 320px; border-right: 2px solid #ECE9E9;
 }
 
 .workspace{
   -webkit-flex: 1;
   background: #fff;
+  display: -webkit-box;
+  -webkit-box-align: center;
 }
 
 .simulator{
   width: 375px;
   height: 667px;
+  margin: 0 auto;
   border: 10px solid #ddd;
   border-radius: 3px;
+  font-size: 0;
+  cursor: default;
 }
 
 .inspector{

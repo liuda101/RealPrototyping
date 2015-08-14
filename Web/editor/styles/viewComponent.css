@@ -1,9 +1,24 @@
 .component-view{
   position: relative;
   display: -webkit-box;
+  box-sizing: border-box;
 }
 
-.component-view.selected:after{
+
+
+.component-image{
+  display: inline-block;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.component-label{
+  position: relative;
+  cursor: text;
+}
+
+.component-view.selected:after, .component-image.selected:after, .component-label.selected:after{
   content: '';
   position: absolute;
   border: 1px solid #47BCDE;

@@ -1,69 +1,55 @@
-var Components = {};
+var ComponentManager = {
 
-Components.View = function() {
-  this.height = 100;
-  this.backgroundColor = '#fefefe';
+  controller: function() {
+    return {
+      currentDrag: m.prop(false),
 
-  this.container = null;
-};
+      components: [
+        {
+          groupTitle: 'View',
+          items: [
+            {
+              key: 'ViewComponent',
+              icon: 'component_icon_view',
+              title: 'View'
+            },
+            {
+              key: 'ImageComponent',
+              icon: 'component_icon_image',
+              title: 'Image'
+            },
+            {
+              key: 'LabelComponent',
+              icon: 'component_icon_label',
+              title: 'Label'
+            }
+          ]
+        }
+      ],
 
-Components.View.prototype.render = function() {
-  var self = this;
+      onDragStart: function(value) {
+        this.currentDrag(value);
+      }
+    }
+  },
 
-
-  var div = document.createElement('div');
-  div.style.height = this.height + 'px';
-  div.style.backgroundColor = this.backgroundColor;
-
-  div.addEventListener('click', function() {
-    div.style.backgroundColor = 'rgba(249, 200, 200, 0.5)';
-
-    inspector.inspect(self);
-
-  }, false);
-
-
-  this.container = div;
-
-  return div;
-};
-
-
-Components.View.prototype.update = function(obj) {
-  for(var key in obj) {
-    this[key] = obj[key];
+  view: function(ctrl) {
+    return ctrl.components.map(function(component) {
+      return m('.component-manager-group', [
+        m('.component-manager-group-title', component.groupTitle),
+        m('.component-manager-group-content', component.items.map(function(item) {
+          return m('.drag-component', {
+              draggable: true,
+              ondragstart: ctrl.onDragStart.bind(ctrl, item.key)
+            },[
+              m('.drag-component-icon', [
+                m('img', {src: 'images/' + item.icon + '.png', draggable: false})
+              ]),
+              m('.drag-component-title', item.title)
+            ]);
+        }))
+      ]);
+    });
   }
 
-
-  this.container.style.backgroundColor = this.backgroundColor;
-};
-
-Components.View.prototype.getDataToInspect = function() {
-  return [
-    {title: '背景色', defaultValue: 'rgba(249, 200, 200, 0.5)', type: 'color', key: 'backgroundColor'}
-  ];
-};
-
-
-var ComponentManager = function() {
-  this.dragData = null;
-
-  this.init();
-};
-
-ComponentManager.prototype.currentDragData = function() {
-  return this.dragData;
-};
-
-ComponentManager.prototype.init = function() {
-  var self = this;
-
-  var allComponent = document.querySelectorAll('.component');
-  for(var i = 0; i < allComponent.length; i ++) {
-    allComponent[i].addEventListener('dragstart', function(e) {
-      self.dragData = {
-        component: e.target.getAttribute('data-component')
-      };
-    }, false);
-  }
 };
