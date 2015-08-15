@@ -2,6 +2,7 @@
   position: relative;
   display: -webkit-box;
   box-sizing: border-box;
+  resize: both; 
 }
 
 
@@ -17,7 +18,7 @@
   cursor: text;
 }
 
-.component-view.selected:after, .component-image.selected:after, .component-label.selected:after{
+.component-view.selected:after, .component-label.selected:after{
   content: '';
   position: absolute;
   border: 1px solid #47BCDE;

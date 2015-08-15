@@ -4,6 +4,7 @@
   <title>Real Prototyping</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="styles/app.css" type="text/css">
+  <link rel="stylesheet" href="styles/resizer.css" type="text/css">
   <link rel="stylesheet" href="styles/inspector.css" type="text/css">
   <link rel="stylesheet" href="styles/viewComponent.css" type="text/css">
   <link rel="stylesheet" href="styles/componentManager.css" type="text/css">
@@ -14,7 +15,10 @@
     <div class="component-manager" id="componentManager">
     </div>
     <div class="workspace">
-      <div class="simulator" id="simulator"></div>
+      <div class="simulator-w">
+        <div class="simulator-grid"></div>
+        <div class="simulator" id="simulator"></div>
+      </div>
     </div>
     <div class="inspector" id="inspector"></div>
   </div>
@@ -25,6 +29,9 @@
   
   <script src="scripts/componentManager.js"></script>
   <script src="scripts/inspector.js"></script>
+  
+  <script src="scripts/resizer.js"></script>
+
   <script src="scripts/viewComponent.js"></script>
   <script src="scripts/imageComponent.js"></script>
   <script src="scripts/labelComponent.js"></script>

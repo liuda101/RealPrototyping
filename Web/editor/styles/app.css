@@ -17,7 +17,8 @@ html, body, ul, li, div, h1, h2, h3, h4, h5, h6{padding:0; margin:0; -webkit-use
   -webkit-box-align: center;
 }
 
-.simulator{
+
+.simulator-w{
   width: 375px;
   height: 667px;
   margin: 0 auto;
@@ -25,6 +26,14 @@ html, body, ul, li, div, h1, h2, h3, h4, h5, h6{padding:0; margin:0; -webkit-use
   border-radius: 3px;
   font-size: 0;
   cursor: default;
+  position: relative;
+}
+
+.simulator-grid{
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAHUlEQVQoz2N88ODBfwZyASWamRgoAKOaRzUPV80AJzoHWi8ZsW0AAAAASUVORK5CYII=");
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .inspector{

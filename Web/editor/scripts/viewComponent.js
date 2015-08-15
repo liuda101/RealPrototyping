@@ -1,9 +1,9 @@
 var ViewComponent = {
   defaultAttributes: {
     height: 100,
-    width: 100,
     isSelectable: true,
-    isSelected: true
+    isSelected: true,
+    'background-color': '#ffffff'
   },
 
   controller: function(attributes) {
@@ -24,13 +24,6 @@ var ViewComponent = {
       subComponents: m.prop([]),
       
       inspectAttributes: [
-        {
-          key: ' width',
-          name: '宽度',
-          type: 'number',
-          unit: 'px',
-          defaultValue: m.prop(attributes. width || 375)
-        },
 
         {
           key: 'height',
@@ -61,7 +54,7 @@ var ViewComponent = {
           name: '背景色',
           type: 'color',
           unit: '',
-          defaultValue: m.prop('#ffffff')
+          defaultValue: m.prop(attributes['background-color'] || 'transparent')
         },
 
         {

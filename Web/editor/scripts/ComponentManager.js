@@ -6,6 +6,22 @@ var ComponentManager = {
 
       components: [
         {
+          groupTitle: 'Layout',
+          items: [
+            {
+              key: 'ColumnLayout',
+              icon: 'component_icon_column',
+              title: 'Column'
+            },
+
+            {
+              key: 'ColumnLayout',
+              icon: 'component_icon_row',
+              title: 'Row'
+            }
+          ]
+        },
+        {
           groupTitle: 'View',
           items: [
             {
@@ -22,7 +38,27 @@ var ComponentManager = {
               key: 'LabelComponent',
               icon: 'component_icon_label',
               title: 'Label'
+            },
+            {
+              key: 'ButtonComponent',
+              icon: 'component_icon_button',
+              title: 'Button'
+            },
+            {
+              key: 'ToggleComponent',
+              icon: 'inspector_icon_toggle',
+              title: 'Toggle'
+            },
+            {
+              key: 'SegmentComponent',
+              icon: 'component_icon_segment',
+              title: 'Segment'
             }
+          ]
+        },
+        {
+          groupTitle: 'Components',
+          items: [
           ]
         }
       ],
@@ -34,7 +70,7 @@ var ComponentManager = {
   },
 
   view: function(ctrl) {
-    return ctrl.components.map(function(component) {
+    return ctrl.components.map(function(component, groupIndex) {
       return m('.component-manager-group', [
         m('.component-manager-group-title', component.groupTitle),
         m('.component-manager-group-content', component.items.map(function(item) {

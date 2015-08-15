@@ -1,0 +1,13 @@
+.resizer{position: absolute; width: 100%; height: 100%; left: 0; top: 0; border: 1px solid #18A937; box-sizing: border-box; z-index: 100;}
+.resizer>div{position: absolute; width: 10px; height: 10px; border: 1px solid #24BD46; background: #ACFBBD; border-radius: 3px;}
+.resizer>div:hover{border-color: #18A937; background: #45E068;}
+.resizer>div:active{box-shadow:0 0 5px #45E068;}
+.resizer>div.dragging{border-color: #18A937; background: #45E068; box-shadow:0 0 5px #45E068;}
+.resizer-tl{left: -6px; top: -6px;}
+.resizer-t{left: 50%; margin-left: -6px; top: -6px;}
+.resizer-tr{right: -6px; top: -6px;}
+.resizer-r{right: -6px; top: 50%; margin-top: -6px;}
+.resizer-br{right: -6px; bottom: -6px;}
+.resizer-b{left: 50%; margin-left: -6px; bottom: -6px;}
+.resizer-bl{left: -6px; bottom: -6px;}
+.resizer-l{left: -6px; top: 50%; margin-top: -6px;}

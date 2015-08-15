@@ -105,7 +105,7 @@ var ImageComponent = {
       ondrop: ctrl.onDragDrop.bind(ctrl),
       onclick: ctrl.onClicked.bind(ctrl),
       style: util.generateCSS(ctrl.inspectAttributes)
-    });
+    }, ctrl.isSelected() ? m.component(resizer) : null);
   }
 };
 

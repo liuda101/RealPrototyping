@@ -33,6 +33,15 @@ var LabelComponent = {
         },
 
         {
+          key: 'text-align',
+          name: '对齐方式',
+          type: 'single-select',
+          unit: '',
+          defaultValue: m.prop('left'),
+          values: ['left', 'center', 'right']
+        },
+
+        {
           key: 'line-height',
           name: '行高',
           type: 'number',
