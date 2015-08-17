@@ -26,7 +26,10 @@
         
       } else if (item.key == 'margin' || item.key == 'padding') {
         result.push(item.key + ':' + item.defaultValue().join(item.unit + ' ') + item.unit);
-        
+      } else if (item.key == 'flex') {
+        if (item.defaultValue() === 1) {
+          result.push('flex: 1');
+        }
       } else {
         result.push(item.key + ':' + item.defaultValue() + item.unit);
       }

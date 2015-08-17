@@ -24,6 +24,13 @@ var ViewComponent = {
       subComponents: m.prop([]),
       
       inspectAttributes: [
+        {
+          key: 'width',
+          name: '高度',
+          type: 'number',
+          unit: 'px',
+          defaultValue: m.prop(attributes.width || 375)
+        },
 
         {
           key: 'height',
@@ -31,6 +38,14 @@ var ViewComponent = {
           type: 'number',
           unit: 'px',
           defaultValue: m.prop(attributes.height || 667)
+        },
+
+        {
+          key: 'flex',
+          name: '铺满',
+          type: 'check',
+          unit: '',
+          defaultValue: m.prop(1)
         },
 
         {
@@ -86,6 +101,11 @@ var ViewComponent = {
       update: function(attributeMap, index) {
         var thisAttribute = this.inspectAttributes[index];
         thisAttribute.defaultValue(attributeMap.defaultValue());
+      },
+
+      updateRect: function(rect) {
+        this.inspectAttributes[0].defaultValue(rect.width);
+        this.inspectAttributes[1].defaultValue(rect.height);
       },
 
 
@@ -151,7 +171,7 @@ var ViewComponent = {
       style: util.generateCSS(ctrl.inspectAttributes)
 
     }, [
-
+      ctrl.isSelected() ? m.component(resizer, {width: ctrl.inspectAttributes[0].defaultValue(), height: ctrl.inspectAttributes[1].defaultValue(), component: ctrl}) : null,
       ctrl.subComponents().map(function(component) {
         return component.view(component.controller);
       })

@@ -70,6 +70,10 @@ var InspectorComponent = {
       ]);
       break;
 
+      case 'check':
+      return m('input', {type: 'checkbox', onchange: ctrl.onChange.bind(ctrl, inputAttribute, index)});
+      break;
+
       case 'four-number':
       return m('.inspector-four-input', {className: inputAttribute.key}, [
         inputAttribute.defaultValue().map(function(item, valueIndex) {

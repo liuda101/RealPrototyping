@@ -75,6 +75,11 @@ var ImageComponent = {
         thisAttribute.defaultValue(attributeMap.defaultValue());
       },
 
+      updateRect: function(rect) {
+        this.inspectAttributes[0].defaultValue(rect.width);
+        this.inspectAttributes[1].defaultValue(rect.height);
+      },
+
 
       onDragOver: function(e) {
         e.preventDefault();
@@ -105,7 +110,7 @@ var ImageComponent = {
       ondrop: ctrl.onDragDrop.bind(ctrl),
       onclick: ctrl.onClicked.bind(ctrl),
       style: util.generateCSS(ctrl.inspectAttributes)
-    }, ctrl.isSelected() ? m.component(resizer) : null);
+    }, ctrl.isSelected() ? m.component(resizer, {width: ctrl.inspectAttributes[0].defaultValue(), height: ctrl.inspectAttributes[1].defaultValue(), component: ctrl}) : null);
   }
 };
 
